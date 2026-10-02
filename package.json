@@ -1,0 +1,21 @@
+{
+  "name": "smartslot-ai",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev -w @smartslot/api",
+    "dev:web": "npm run dev -w @smartslot/web",
+    "build": "npm run build -w @smartslot/api && npm run build -w @smartslot/web",
+    "test": "npm run test -w @smartslot/api && npm run test:scheduler",
+    "test:scheduler": ".venv/bin/python -m pytest services/scheduler/tests -q",
+    "seed": "npm run seed -w @smartslot/api",
+    "start": "npm run start -w @smartslot/api"
+  },
+  "overrides": {
+    "uuid": "11.1.1"
+  }
+}
