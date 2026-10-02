@@ -1,0 +1,6 @@
+export type Role = 'Admin' | 'HOD' | 'Faculty' | 'Student';
+export type User = { id: string; name: string; email: string; role: Role; departmentId?: string; facultyId?: string };
+export type TimeSlot = { day?: string; periodIndex: number; label?: string; startTime: string; endTime: string; kind?: 'class' | 'break' | 'blocked' };
+export type Semester = { _id: string; semesterNumber: number; semesterName: string; workingDays: string[]; timeSlots: TimeSlot[]; breakConfiguration: { name: string; startTime: string; endTime: string; days?: string[] }[]; status: string; configurationVerified: boolean; sourceNotes?: string; academicYearId: string; departmentId: string };
+export type ScheduleSession = { _id?: string; day: string; startTime: string; endTime: string; subjectId: string; facultyId: string; batchId: string | null; classroomId: string; sessionType: 'Theory' | 'Lab' | 'Tutorial' | 'Project'; duration: number; assignmentId: string; locked?: boolean };
+export type Timetable = { _id: string; semesterId: string; version: number; generationStatus: string; generatedBy: string; generationDate: string; schedule: ScheduleSession[]; validationResults: any[]; optimizationScore?: number; scoreBreakdown?: any; published: boolean; locked: boolean };
